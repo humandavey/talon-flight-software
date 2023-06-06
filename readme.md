@@ -1,4 +1,4 @@
-# Talon Flight Software [humandavey]
+# Talon Flight Software [humandavey, Spaceret]
 
 ### About
 
