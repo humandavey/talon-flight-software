@@ -132,7 +132,7 @@ def main(window):
         if confirm_eject:
             window.addstr(22, 10, "3> Press [Space] to confirm test", RED_ON_BLACK)
         elif eject:
-            window.addstr(22, 10, "3> Ejection in process", YELLOW_ON_BLACK)
+            window.addstr(22, 10, "3> Ejection in progress", YELLOW_ON_BLACK)
 
         window.refresh()
 
