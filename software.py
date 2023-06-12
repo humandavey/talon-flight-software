@@ -106,8 +106,8 @@ def main(window):
         elif confirm_eject:
             window.addstr(18, 52, "___________    __              __   __")
             window.addstr(19, 52, "\_   _____/   |__| ____  _____/  |_|__| ____   ____")
-            window.addstr(20, 52, " |    __)_    |  _/ __ _/ ___\   __|  |/  _ \ /    \ ")
-            window.addstr(21, 52, " |        \   |  \  ___\  \___|  | |  (  <_> |   |  \ ")
+            window.addstr(20, 52, " |    __)_    |  _/ __ _/ ___\   __|  |/  _ \ /    \\")
+            window.addstr(21, 52, " |        \   |  \  ___\  \___|  | |  (  <_> |   |  \\")
             window.addstr(22, 52, "/_________/\__|  |\_____\_____|__| |__|\____/|___|__/")
             window.addstr(23, 52, "────────────\_____|")
         elif eject:
@@ -130,7 +130,7 @@ def main(window):
         
         # Update ejection test message
         if confirm_eject:
-            window.addstr(22, 10, "3> Press [Space] to confirm test", RED_ON_BLACK)
+            window.addstr(22, 10, "3> Press [SPACE] to confirm test", RED_ON_BLACK)
         elif eject:
             window.addstr(22, 10, "3> Ejection in progress", YELLOW_ON_BLACK)
 
