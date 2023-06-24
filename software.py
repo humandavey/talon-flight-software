@@ -1,18 +1,42 @@
-import curses, time
+import curses, time, board, adafruit_bmp3xx
 from curses.textpad import rectangle
 from curses import wrapper
+
+bmp = adafruit_bmp3xx.BMP3XX_I2C(board.I2C())
+readings = []
+armed = False
+passed_apogee = False
 
 def eject_chute():
     pass
     # send 5v to ignite pyro charges
 
 def get_data():
-    pass
-    # save & analyze incoming data
+    return (bmp.temperature, bmp.pressure, bmp.altitude)
+
+def analyze_data(data):
+    readings.append(data)
+
+    highest_i = 0
+    highest = -1
+    for i in range(len(readings)):
+        if highest < readings[i][2]:
+            highest_i = i
+            highest = readings[i][2]
+
+    if not passed_apogee and highest_i < len(readings) - 5:
+        passed_apogee = True
+
+    if len(readings) > 5:
+        i = len(readings)
+        alt = readings[i][2]
+
+        if alt < readings[i-4][2] and armed and alt > 200 and passed_apogee:
+            eject_chute()
+        
 
 def main(window):
 
-    armed = False
     confirm_eject = False
     eject_time = 1326194273874629
     eject = False
@@ -29,7 +53,7 @@ def main(window):
 
     while True:
 
-        get_data()
+        analyze_data(get_data())
 
         # Get key presses
         try:
